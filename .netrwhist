@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/breno/.config/i3status'
+let g:netrw_dirhist_2='/home/breno/repos/dwm'
+let g:netrw_dirhist_3='/home/breno/.config/sxhkd'
+let g:netrw_dirhist_4='/home/breno/Dropbox/Uni/es/hw1'
+let g:netrw_dirhist_5='/home/breno/VirtualBox VMs'
