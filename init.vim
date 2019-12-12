@@ -19,6 +19,7 @@ Plug 'dense-analysis/ale'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'chrisbra/Colorizer'
 Plug 'jceb/vim-orgmode'
+Plug 'alx741/vim-hindent'
 
 " Initialize plugin system
 call plug#end()
