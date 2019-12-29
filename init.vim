@@ -20,7 +20,7 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'chrisbra/Colorizer'
 Plug 'jceb/vim-orgmode'
 Plug 'alx741/vim-hindent'
-
+Plug 'vimwiki/vimwiki'
 " Initialize plugin system
 call plug#end()
 
@@ -45,6 +45,7 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " maps
 let mapleader = ","
+let maplocalleader = ","
 nnoremap <space> za
 
 " Searching
@@ -63,5 +64,5 @@ map <leader>t :NERDTreeToggle<CR>
 set clipboard+=unnamedplus
 
 " VimOrg
-let g:org_agenda_files=['~/Dropbox/org/index.org']
+let g:org_agenda_files=['~/repos/org/index.org']
 
