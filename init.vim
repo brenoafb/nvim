@@ -66,3 +66,6 @@ set clipboard+=unnamedplus
 " VimOrg
 let g:org_agenda_files=['~/repos/org/index.org']
 
+" VimWiki
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
