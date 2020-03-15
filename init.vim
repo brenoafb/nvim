@@ -21,6 +21,8 @@ Plug 'chrisbra/Colorizer'
 Plug 'jceb/vim-orgmode'
 Plug 'alx741/vim-hindent'
 Plug 'vimwiki/vimwiki'
+Plug 'godlygeek/tabular'
+Plug 'masukomi/vim-markdown-folding'
 " Initialize plugin system
 call plug#end()
 
@@ -42,6 +44,7 @@ set expandtab
 set shiftwidth=2
 set smarttab
 autocmd BufWritePre * %s/\s\+$//e
+set foldmethod=syntax
 
 " maps
 let mapleader = ","
@@ -55,7 +58,7 @@ vnoremap / /\v
 " Reload config after editing
 autocmd BufWritePost ~/.config/nvim/init.vim :source ~/.config/nvim/init.vim
 " Goyo shortcut
-map <leader>f :Goyo \| set linebreak<CR>
+map <leader>g :Goyo \| set linebreak<CR>
 
 " Open NerdTree
 map <leader>t :NERDTreeToggle<CR>
@@ -67,5 +70,18 @@ set clipboard+=unnamedplus
 let g:org_agenda_files=['~/repos/org/index.org']
 
 " VimWiki
-let g:vimwiki_list = [{'path': '~/vimwiki/',
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
+
+" Markdown
+" let g:markdown_folding = 1
+" let g:markdown_enable_folding = 1
+
+let g:vimwiki_folding = 'expr'
+
+set nocompatible
+if has("autocmd")
+  filetype plugin indent on
+endif
+
+autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
