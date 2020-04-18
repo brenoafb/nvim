@@ -43,7 +43,19 @@ set softtabstop=0
 set expandtab
 set shiftwidth=2
 set smarttab
-autocmd BufWritePre * %s/\s\+$//e
+" The next line eliminates trailing whitespace
+" autocmd BufWritePre * %s/\s\+$//e
+" The problem is that it results in the cursos moving after writing the file.
+" The solution is implemented as follows
+" https://stackoverflow.com/a/37201230
+function! <SID>StripTrailingWhitespaces()
+      let l = line(".")
+      let c = col(".")
+      %s/\s\+$//e
+      call cursor(l, c)
+endfun
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
 set foldmethod=syntax
 
 " maps
