@@ -85,15 +85,10 @@ let g:org_agenda_files=['~/repos/org/index.org']
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
-" Markdown
-" let g:markdown_folding = 1
-" let g:markdown_enable_folding = 1
-
-let g:vimwiki_folding = 'expr'
-
 set nocompatible
 if has("autocmd")
   filetype plugin indent on
 endif
 
-autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
+" Update binds when sxhkdrc is updated.
+	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
