@@ -19,8 +19,8 @@ Plug 'jceb/vim-orgmode'
 Plug 'vimwiki/vimwiki'
 Plug 'godlygeek/tabular'
 Plug 'masukomi/vim-markdown-folding'
+Plug 'neovimhaskell/haskell-vim'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
-" Plug 'neovimhaskell/haskell-vim'
 " Initialize plugin system
 call plug#end()
 
