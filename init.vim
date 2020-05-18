@@ -5,9 +5,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Make sure you use single quotes
 
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
-" Multiple Plug commands can be written in a single line using | separators
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
@@ -16,13 +14,13 @@ Plug 'ajh17/VimCompletesMe'
 Plug 'davidhalter/jedi-vim'
 Plug 'ervandew/supertab'
 Plug 'dense-analysis/ale'
-Plug 'neovimhaskell/haskell-vim'
 Plug 'chrisbra/Colorizer'
 Plug 'jceb/vim-orgmode'
-Plug 'alx741/vim-hindent'
 Plug 'vimwiki/vimwiki'
 Plug 'godlygeek/tabular'
 Plug 'masukomi/vim-markdown-folding'
+Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+" Plug 'neovimhaskell/haskell-vim'
 " Initialize plugin system
 call plug#end()
 
