@@ -11,6 +11,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'dense-analysis/ale'
 Plug 'vimwiki/vimwiki'
 Plug 'godlygeek/tabular'
+Plug 'neovimhaskell/haskell-vim'
 " Plug 'autozimu/LanguageClient-neovim'
 " Initialize plugin system
 call plug#end()
