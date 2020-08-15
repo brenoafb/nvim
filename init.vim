@@ -6,23 +6,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Make sure you use single quotes
 
 Plug 'junegunn/vim-easy-align'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'junegunn/goyo.vim'
-Plug 'ajh17/VimCompletesMe'
-Plug 'davidhalter/jedi-vim'
-Plug 'ervandew/supertab'
 Plug 'dense-analysis/ale'
-Plug 'chrisbra/Colorizer'
-Plug 'jceb/vim-orgmode'
 Plug 'vimwiki/vimwiki'
 Plug 'godlygeek/tabular'
-Plug 'masukomi/vim-markdown-folding'
-Plug 'neovimhaskell/haskell-vim'
-Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+" Plug 'autozimu/LanguageClient-neovim'
 " Initialize plugin system
 call plug#end()
+
+colorscheme zellner
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -75,9 +68,6 @@ map <leader>t :NERDTreeToggle<CR>
 
 " use system clipboard
 set clipboard+=unnamedplus
-
-" VimOrg
-let g:org_agenda_files=['~/repos/org/index.org']
 
 " VimWiki
 let g:vimwiki_list = [{'path': '~/vimwiki/',
