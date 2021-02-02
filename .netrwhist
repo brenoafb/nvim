@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =7
-let g:netrw_dirhist_7='/home/breno/Documents/formula-parser'
-let g:netrw_dirhist_6='/home/breno/go/src/monkey/token'
-let g:netrw_dirhist_5='/home/breno/go/src'
-let g:netrw_dirhist_4='/home/breno/go/src/monkey/lexer'
-let g:netrw_dirhist_3='/home/breno/go/src/monkey'
-let g:netrw_dirhist_2='/home/breno/go/src/monkey/token'
-let g:netrw_dirhist_1='/home/breno/go/src/monkey'

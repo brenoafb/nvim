@@ -12,11 +12,11 @@ Plug 'dense-analysis/ale'
 Plug 'vimwiki/vimwiki'
 Plug 'godlygeek/tabular'
 Plug 'neovimhaskell/haskell-vim'
-" Plug 'autozimu/LanguageClient-neovim'
+Plug 'keith/swift.vim'
+Plug 'liuchengxu/space-vim-dark'
+Plug 'junegunn/vim-emoji'
 " Initialize plugin system
 call plug#end()
-
-colorscheme zellner
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -25,7 +25,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 
-set number relativenumber
+set number
 set matchpairs+=<:> " use % to jump between pairs
 " Visualize tabs
 set listchars=tab:▸\
@@ -35,6 +35,11 @@ set softtabstop=0
 set expandtab
 set shiftwidth=2
 set smarttab
+
+" Searching
+set ignorecase
+set smartcase
+
 " The next line eliminates trailing whitespace
 " autocmd BufWritePre * %s/\s\+$//e
 " The problem is that it results in the cursos moving after writing the file.
@@ -48,16 +53,11 @@ function! <SID>StripTrailingWhitespaces()
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
-set foldmethod=syntax
-
 " maps
 let mapleader = ","
 let maplocalleader = ","
 nnoremap <space> za
 
-" Searching
-nnoremap / /\v
-vnoremap / /\v
 
 " Reload config after editing
 autocmd BufWritePost ~/.config/nvim/init.vim :source ~/.config/nvim/init.vim
@@ -74,6 +74,8 @@ set clipboard+=unnamedplus
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
+let g:vimwiki_markdown_link_ext=1
+
 set nocompatible
 if has("autocmd")
   filetype plugin indent on
@@ -81,3 +83,13 @@ endif
 
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
+
+" Space vim dark theme settings
+colorscheme space-vim-dark
+hi Normal     ctermbg=NONE guibg=NONE
+hi LineNr     ctermbg=NONE guibg=NONE
+hi SignColumn ctermbg=NONE guibg=NONE
+
+" Emoji
+set completefunc=emoji#complete
+
