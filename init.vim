@@ -15,7 +15,9 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'keith/swift.vim'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'junegunn/vim-emoji'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 " Initialize plugin system
+"
 call plug#end()
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -93,3 +95,6 @@ hi SignColumn ctermbg=NONE guibg=NONE
 " Emoji
 set completefunc=emoji#complete
 
+" Markdown Preview
+let g:mkdp_auto_start = 1
+let g:mkdp_auto_close = 1
