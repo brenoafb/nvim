@@ -26,6 +26,7 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+syntax on
 
 set number
 set matchpairs+=<:> " use % to jump between pairs
@@ -60,7 +61,6 @@ let mapleader = ","
 let maplocalleader = ","
 nnoremap <space> za
 
-
 " Reload config after editing
 autocmd BufWritePost ~/.config/nvim/init.vim :source ~/.config/nvim/init.vim
 " Goyo shortcut
@@ -77,6 +77,9 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
 let g:vimwiki_markdown_link_ext=1
+
+set foldmethod=syntax
+let g:vimwiki_folding = 'expr'
 
 set nocompatible
 if has("autocmd")
@@ -96,5 +99,27 @@ hi SignColumn ctermbg=NONE guibg=NONE
 set completefunc=emoji#complete
 
 " Markdown Preview
-let g:mkdp_auto_start = 1
+let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
+
+" ALE config
+
+" Optional, configure as-you-type completions
+set completeopt=menu,menuone,preview,noselect,noinsert
+let g:ale_completion_enabled = 1
+
+let g:ale_linters = {'haskell': ['hlint'], 'elixir': ['elixir-ls']}
+
+let g:ale_fixers = {'haskell': ['hlint'], 'elixir': ['mix-format']}
+
+" Required, tell ALE where to find Elixir LS
+let g:ale_elixir_elixir_ls_release = expand("~/Documents/elixir-ls/rel")
+
+" Optional, you can disable Dialyzer with this setting
+let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
+
+let g:ale_fix_on_save = 1
+
+nnoremap dt :ALEGoToDefinition<cr>
+nnoremap df :ALEFix<cr>
+nnoremap K :ALEHover<cr>
