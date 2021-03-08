@@ -6,6 +6,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Make sure you use single quotes
 
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-emoji'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'junegunn/goyo.vim'
 Plug 'dense-analysis/ale'
@@ -14,7 +17,6 @@ Plug 'godlygeek/tabular'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'keith/swift.vim'
 Plug 'liuchengxu/space-vim-dark'
-Plug 'junegunn/vim-emoji'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 " Initialize plugin system
 "
@@ -123,3 +125,9 @@ let g:ale_fix_on_save = 1
 nnoremap dt :ALEGoToDefinition<cr>
 nnoremap df :ALEFix<cr>
 nnoremap K :ALEHover<cr>
+
+" vim fzf config
+map <leader>g :GFiles<CR>
+map <leader>h :Files ~<CR>
+map <leader>b :Buffers<CR>
+map <leader>w :Windows<CR>
