@@ -121,7 +121,7 @@ nnoremap K :ALEHover<cr>
 
 " vim fzf config
 map <leader>g :GFiles<CR>
-map <leader>p :Files ~<CR>
+map <leader>p :Files<CR>
 map <leader>h :Files ~<CR>
 map <leader>b :Buffers<CR>
 map <leader>w :Windows<CR>
