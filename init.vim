@@ -6,7 +6,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Make sure you use single quotes
 
 Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/vim-emoji'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -80,9 +79,6 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 
 let g:vimwiki_markdown_link_ext=1
 
-set foldmethod=syntax
-let g:vimwiki_folding = 'expr'
-
 set nocompatible
 if has("autocmd")
   filetype plugin indent on
@@ -96,9 +92,6 @@ colorscheme space-vim-dark
 hi Normal     ctermbg=NONE guibg=NONE
 hi LineNr     ctermbg=NONE guibg=NONE
 hi SignColumn ctermbg=NONE guibg=NONE
-
-" Emoji
-set completefunc=emoji#complete
 
 " Markdown Preview
 let g:mkdp_auto_start = 0
@@ -128,6 +121,7 @@ nnoremap K :ALEHover<cr>
 
 " vim fzf config
 map <leader>g :GFiles<CR>
+map <leader>p :Files ~<CR>
 map <leader>h :Files ~<CR>
 map <leader>b :Buffers<CR>
 map <leader>w :Windows<CR>
