@@ -9,7 +9,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'junegunn/goyo.vim'
 Plug 'dense-analysis/ale'
 Plug 'vimwiki/vimwiki'
 Plug 'godlygeek/tabular'
@@ -65,7 +64,6 @@ nnoremap <space> za
 " Reload config after editing
 autocmd BufWritePost ~/.config/nvim/init.vim :source ~/.config/nvim/init.vim
 " Goyo shortcut
-map <leader>g :Goyo \| set linebreak<CR>
 
 " Open NerdTree
 map <leader>t :NERDTreeToggle<CR>
