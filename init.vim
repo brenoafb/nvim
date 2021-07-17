@@ -14,7 +14,6 @@ Plug 'vimwiki/vimwiki'
 Plug 'godlygeek/tabular'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'keith/swift.vim'
-Plug 'liuchengxu/space-vim-dark'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 " Initialize plugin system
 "
@@ -84,12 +83,6 @@ endif
 
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
-
-" Space vim dark theme settings
-colorscheme space-vim-dark
-hi Normal     ctermbg=NONE guibg=NONE
-hi LineNr     ctermbg=NONE guibg=NONE
-hi SignColumn ctermbg=NONE guibg=NONE
 
 " Markdown Preview
 let g:mkdp_auto_start = 0
