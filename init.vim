@@ -8,7 +8,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'dense-analysis/ale'
 Plug 'vimwiki/vimwiki'
 Plug 'godlygeek/tabular'
@@ -19,13 +18,11 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 "
 call plug#end()
 
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
 syntax on
+
+" Clear highlighting on escape in normal mode
+nnoremap <esc> :noh<return><esc>
+nnoremap <esc>^[ <esc>^[
 
 set number
 set matchpairs+=<:> " use % to jump between pairs
@@ -64,25 +61,26 @@ nnoremap <space> za
 autocmd BufWritePost ~/.config/nvim/init.vim :source ~/.config/nvim/init.vim
 " Goyo shortcut
 
-" Open NerdTree
-map <leader>t :NERDTreeToggle<CR>
-
 " use system clipboard
 set clipboard+=unnamedplus
 
 " VimWiki
-let g:vimwiki_list = [{'path': '~/vimwiki/',
+let g:vimwiki_list = [{'path': '~/Sync/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
 let g:vimwiki_markdown_link_ext=1
+
 
 set nocompatible
 if has("autocmd")
   filetype plugin indent on
 endif
 
-" Update binds when sxhkdrc is updated.
-	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " Markdown Preview
 let g:mkdp_auto_start = 0
@@ -112,7 +110,7 @@ nnoremap K :ALEHover<cr>
 
 " vim fzf config
 map <leader>g :GFiles<CR>
-map <leader>p :Files<CR>
+map <leader>f :Files<CR>
 map <leader>h :Files ~<CR>
 map <leader>b :Buffers<CR>
-map <leader>w :Windows<CR>
+map <leader>p :Windows<CR>
