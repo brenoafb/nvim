@@ -14,6 +14,7 @@ Plug 'godlygeek/tabular'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'keith/swift.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'udalov/kotlin-vim'
 " Initialize plugin system
 "
 call plug#end()
