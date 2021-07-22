@@ -115,3 +115,6 @@ map <leader>f :Files<CR>
 map <leader>h :Files ~<CR>
 map <leader>b :Buffers<CR>
 map <leader>p :Windows<CR>
+map <leader>a :Ag<CR>
+map <leader>r :Rg<CR>
+
