@@ -8,16 +8,22 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 Plug 'vimwiki/vimwiki'
 Plug 'godlygeek/tabular'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'keith/swift.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'udalov/kotlin-vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 " Initialize plugin system
 "
 call plug#end()
+
+autocmd VimEnter * COQnow
 
 syntax on
 
@@ -83,31 +89,42 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+colorscheme nord
+
 " Markdown Preview
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
 
-" ALE config
+" " ALE config
+"
+" " Optional, configure as-you-type completions
+" set completeopt=menu,menuone,preview,noselect,noinsert
+" let g:ale_completion_enabled = 1
+"
+" let g:ale_linters = {'haskell': ['hlint'], 'elixir': ['elixir-ls']}
+"
+" let g:ale_fixers = {'haskell': ['hlint'], 'elixir': ['mix-format']}
+"
+" " Required, tell ALE where to find Elixir LS
+" let g:ale_elixir_elixir_ls_release = expand("~/Documents/elixir-ls/rel")
+"
+" " Optional, you can disable Dialyzer with this setting
+" let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
+"
+" let g:ale_fix_on_save = 1
+"
+" nnoremap dt :ALEGoToDefinition<cr>
+" nnoremap df :ALEFix<cr>
+" nnoremap K :ALEHover<cr>
 
-" Optional, configure as-you-type completions
-set completeopt=menu,menuone,preview,noselect,noinsert
-let g:ale_completion_enabled = 1
-
-let g:ale_linters = {'haskell': ['hlint'], 'elixir': ['elixir-ls']}
-
-let g:ale_fixers = {'haskell': ['hlint'], 'elixir': ['mix-format']}
-
-" Required, tell ALE where to find Elixir LS
-let g:ale_elixir_elixir_ls_release = expand("~/Documents/elixir-ls/rel")
-
-" Optional, you can disable Dialyzer with this setting
-let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
-
-let g:ale_fix_on_save = 1
-
-nnoremap dt :ALEGoToDefinition<cr>
-nnoremap df :ALEFix<cr>
-nnoremap K :ALEHover<cr>
+" nvim lsp config
+lua << EOF
+require'lspconfig'.clangd.setup{}
+require'lspconfig'.hls.setup{}
+require'lspconfig'.rls.setup{}
+require'lspconfig'.bashls.setup{}
+require'lspconfig'.tsserver.setup{}
+EOF
 
 " vim fzf config
 map <leader>g :GFiles<CR>
