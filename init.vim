@@ -8,9 +8,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'dense-analysis/ale'
+Plug 'junegunn/goyo.vim'
 Plug 'vimwiki/vimwiki'
-Plug 'godlygeek/tabular'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'keith/swift.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -19,14 +18,17 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+" Plug 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
 " Initialize plugin system
 "
 call plug#end()
 
+colorscheme nord
+
 autocmd VimEnter * COQnow
 
 syntax on
-
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
@@ -76,6 +78,8 @@ let g:vimwiki_list = [{'path': '~/Sync/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
 let g:vimwiki_markdown_link_ext=1
+" let g:markdown_folding=1
+let g:vimwiki_folding="expr"
 
 
 set nocompatible
@@ -89,33 +93,10 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-colorscheme nord
 
 " Markdown Preview
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
-
-" " ALE config
-"
-" " Optional, configure as-you-type completions
-" set completeopt=menu,menuone,preview,noselect,noinsert
-" let g:ale_completion_enabled = 1
-"
-" let g:ale_linters = {'haskell': ['hlint'], 'elixir': ['elixir-ls']}
-"
-" let g:ale_fixers = {'haskell': ['hlint'], 'elixir': ['mix-format']}
-"
-" " Required, tell ALE where to find Elixir LS
-" let g:ale_elixir_elixir_ls_release = expand("~/Documents/elixir-ls/rel")
-"
-" " Optional, you can disable Dialyzer with this setting
-" let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
-"
-" let g:ale_fix_on_save = 1
-"
-" nnoremap dt :ALEGoToDefinition<cr>
-" nnoremap df :ALEFix<cr>
-" nnoremap K :ALEHover<cr>
 
 " nvim lsp config
 lua << EOF
@@ -124,10 +105,11 @@ require'lspconfig'.hls.setup{}
 require'lspconfig'.rls.setup{}
 require'lspconfig'.bashls.setup{}
 require'lspconfig'.tsserver.setup{}
+require'lspconfig'.java_language_server.setup{}
 EOF
 
 " vim fzf config
-map <leader>g :GFiles<CR>
+map <leader>G :GFiles<CR>
 map <leader>f :Files<CR>
 map <leader>h :Files ~<CR>
 map <leader>b :Buffers<CR>
@@ -135,3 +117,5 @@ map <leader>p :Windows<CR>
 map <leader>a :Ag<CR>
 map <leader>r :Rg<CR>
 
+" goyo
+map <leader>g :Goyo<CR>
