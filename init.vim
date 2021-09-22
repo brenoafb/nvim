@@ -18,13 +18,18 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'colepeters/spacemacs-theme.vim'
 " Plug 'plasticboy/vim-markdown'
 Plug 'godlygeek/tabular'
 " Initialize plugin system
 "
 call plug#end()
 
-colorscheme nord
+if (has("termguicolors"))
+  set termguicolors
+endif
+set background=dark
+colorscheme spacemacs-theme
 
 autocmd VimEnter * COQnow
 
