@@ -31,7 +31,7 @@ endif
 set background=dark
 colorscheme spacemacs-theme
 
-autocmd VimEnter * COQnow
+autocmd VimEnter * COQnow --shut-up
 
 syntax on
 " Clear highlighting on escape in normal mode
