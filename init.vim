@@ -19,8 +19,13 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'colepeters/spacemacs-theme.vim'
-" Plug 'plasticboy/vim-markdown'
 Plug 'godlygeek/tabular'
+Plug 'Pocco81/AutoSave.nvim'
+Plug 'ionide/Ionide-vim', {
+      \ 'do':  'make fsautocomplete',
+      \}
+Plug 'Scuilion/markdown-drawer', { 'for': ['markdown']}
+Plug 'SidOfc/mkdx'
 " Initialize plugin system
 "
 call plug#end()
@@ -30,6 +35,7 @@ if (has("termguicolors"))
 endif
 set background=dark
 colorscheme spacemacs-theme
+
 
 autocmd VimEnter * COQnow --shut-up
 
@@ -78,6 +84,11 @@ autocmd BufWritePost ~/.config/nvim/init.vim :source ~/.config/nvim/init.vim
 " use system clipboard
 set clipboard+=unnamedplus
 
+set nocompatible
+if has("autocmd")
+  filetype plugin indent on
+endif
+
 " VimWiki
 let g:vimwiki_list = [{'path': '~/Sync/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
@@ -85,12 +96,17 @@ let g:vimwiki_list = [{'path': '~/Sync/vimwiki/',
 let g:vimwiki_markdown_link_ext=1
 " let g:markdown_folding=1
 let g:vimwiki_folding="expr"
+" markdown drawer
+nnoremap <Leader>md :MarkDrawer<cr>
 
+let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
+                        \ 'enter': { 'shift': 1 },
+                        \ 'links': { 'external': { 'enable': 1 } },
+                        \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
+                        \ 'fold': { 'enable': 1 } }
 
-set nocompatible
-if has("autocmd")
-  filetype plugin indent on
-endif
+" fs = fsharp (not forth)
+autocmd BufNewFile,BufRead *.fs,*.fsx,*.fsi set filetype=fsharp
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -111,6 +127,7 @@ require'lspconfig'.rls.setup{}
 require'lspconfig'.bashls.setup{}
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.java_language_server.setup{}
+-- require'lspconfig'.fsautocomplete.setup{}
 EOF
 
 " vim fzf config
@@ -124,3 +141,7 @@ map <leader>r :Rg<CR>
 
 " goyo
 map <leader>g :Goyo<CR>
+
+" insert the current date
+nnoremap <Leader>d "=strftime("%Y-%m-%d %T")<CR>P
+
