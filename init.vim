@@ -1,41 +1,23 @@
-" Specify a directory for plugins
-" - For Neovim: ~/.local/share/nvim/plugged
-" - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Make sure you use single quotes
-
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'vimwiki/vimwiki'
-Plug 'neovimhaskell/haskell-vim'
-Plug 'keith/swift.vim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'udalov/kotlin-vim'
-Plug 'arcticicestudio/nord-vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-Plug 'colepeters/spacemacs-theme.vim'
 Plug 'godlygeek/tabular'
 Plug 'Pocco81/AutoSave.nvim'
-Plug 'ionide/Ionide-vim', {
-      \ 'do':  'make fsautocomplete',
-      \}
-Plug 'Scuilion/markdown-drawer', { 'for': ['markdown']}
-Plug 'SidOfc/mkdx'
-" Initialize plugin system
-"
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 if (has("termguicolors"))
   set termguicolors
 endif
 set background=dark
-colorscheme spacemacs-theme
-
 
 autocmd VimEnter * COQnow --shut-up
 
@@ -96,15 +78,6 @@ let g:vimwiki_list = [{'path': '~/Sync/vimwiki/',
 let g:vimwiki_markdown_link_ext=1
 " let g:markdown_folding=1
 let g:vimwiki_folding="expr"
-" markdown drawer
-nnoremap <Leader>md :MarkDrawer<cr>
-
-let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
-                        \ 'enter': { 'shift': 1 },
-                        \ 'links': { 'external': { 'enable': 1 } },
-                        \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
-                        \ 'fold': { 'enable': 1 } }
-
 " fs = fsharp (not forth)
 autocmd BufNewFile,BufRead *.fs,*.fsx,*.fsi set filetype=fsharp
 
@@ -114,10 +87,8 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-
-" Markdown Preview
-let g:mkdp_auto_start = 0
-let g:mkdp_auto_close = 1
+" Tabs in go
+au BufNewFile,BufRead *.go setlocal noet ts=2 sw=2 sts=2
 
 " nvim lsp config
 lua << EOF
@@ -126,8 +97,7 @@ require'lspconfig'.hls.setup{}
 require'lspconfig'.rls.setup{}
 require'lspconfig'.bashls.setup{}
 require'lspconfig'.tsserver.setup{}
-require'lspconfig'.java_language_server.setup{}
--- require'lspconfig'.fsautocomplete.setup{}
+require'lspconfig'.gopls.setup{}
 EOF
 
 " vim fzf config
@@ -144,4 +114,22 @@ map <leader>g :Goyo<CR>
 
 " insert the current date
 nnoremap <Leader>d "=strftime("%Y-%m-%d %T")<CR>P
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
 
+" trigger `autoread` when files changes on disk
+set autoread
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+" notification after file change
+autocmd FileChangedShellPost *
+  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
