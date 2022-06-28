@@ -131,12 +131,18 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-require'lspconfig'.clangd.setup{}
-require'lspconfig'.hls.setup{}
-require'lspconfig'.rls.setup{}
-require'lspconfig'.bashls.setup{}
-require'lspconfig'.tsserver.setup{}
-require'lspconfig'.gopls.setup{}
+require'lspconfig'.clangd.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
+require'lspconfig'.bashls.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
+require'lspconfig'.gopls.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
 EOF
 
 " vim fzf config
