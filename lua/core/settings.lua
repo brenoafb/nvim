@@ -8,7 +8,6 @@ opt.completeopt = 'menuone,noinsert,noselect'  -- Autocomplete options
 
 opt.number = true
 opt.showmatch = true
-opt.colorcolumn = '80'
 opt.splitright = true
 opt.splitbelow = true
 opt.ignorecase = true
