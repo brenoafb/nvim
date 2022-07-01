@@ -23,3 +23,17 @@ autocmd('BufEnter', {
   pattern = '*',
   command = 'set fo-=c fo-=r fo-=o'
 })
+
+-- Automatically format go files
+autocmd('BufWritePre', {
+  pattern = '*.go',
+  command = 'lua vim.lsp.buf.formatting_sync()'
+})
+
+
+-- Automatically format TF files
+autocmd('BufWritePre', {
+  pattern = '*.tf',
+  command = 'lua vim.lsp.buf.formatting_sync()'
+})
+

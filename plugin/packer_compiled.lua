@@ -144,6 +144,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/breno/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
+  },
+  ["vim-terraform"] = {
+    loaded = true,
+    path = "/home/breno/.local/share/nvim/site/pack/packer/start/vim-terraform",
+    url = "https://github.com/hashivim/vim-terraform"
   }
 }
 
