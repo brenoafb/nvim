@@ -142,12 +142,12 @@ require'lspconfig'.sumneko_lua.setup {
 local servers = {
   'bashls',
   'clangd',
-  'html',
-  'cssls',
   'tsserver',
   'gopls',
   'sumneko_lua',
-  'terraformls'
+  'terraformls',
+  'tsserver',
+  'svelte'
 }
 
 -- Call setup
