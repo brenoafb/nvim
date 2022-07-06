@@ -99,6 +99,12 @@ _G.packer_plugins = {
     path = "/home/breno/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["doom-one.nvim"] = {
+    config = { "\27LJ\2\n…\3\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\25plugins_integrations\1\0\14\flspsaga\1\19vim_illuminate\2\21indent_blankline\2\rwhichkey\2\rstartify\2\14dashboard\2\14nvim_tree\2\vneogit\2\14telescope\1\rgitsigns\2\14gitgutter\1\15bufferline\1\vbarbar\2\nneorg\2\rpumblend\1\0\2\24transparency_amount\3\20\venable\2\1\0\5\20italic_comments\1\22enable_treesitter\2\20cursor_coloring\1\20terminal_colors\1\27transparent_background\1\nsetup\rdoom-one\frequire\0" },
+    loaded = true,
+    path = "/home/breno/.local/share/nvim/site/pack/packer/start/doom-one.nvim",
+    url = "https://github.com/NTBBloodbath/doom-one.nvim"
+  },
   fzf = {
     loaded = true,
     path = "/home/breno/.local/share/nvim/site/pack/packer/start/fzf",
@@ -153,6 +159,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: doom-one.nvim
+time([[Config for doom-one.nvim]], true)
+try_loadstring("\27LJ\2\n…\3\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\25plugins_integrations\1\0\14\flspsaga\1\19vim_illuminate\2\21indent_blankline\2\rwhichkey\2\rstartify\2\14dashboard\2\14nvim_tree\2\vneogit\2\14telescope\1\rgitsigns\2\14gitgutter\1\15bufferline\1\vbarbar\2\nneorg\2\rpumblend\1\0\2\24transparency_amount\3\20\venable\2\1\0\5\20italic_comments\1\22enable_treesitter\2\20cursor_coloring\1\20terminal_colors\1\27transparent_background\1\nsetup\rdoom-one\frequire\0", "config", "doom-one.nvim")
+time([[Config for doom-one.nvim]], false)
 -- Config for: orgmode
 time([[Config for orgmode]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\forgmode\frequire\0", "config", "orgmode")
