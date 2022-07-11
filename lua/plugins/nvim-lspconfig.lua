@@ -146,7 +146,6 @@ local servers = {
   'gopls',
   'sumneko_lua',
   'terraformls',
-  'tsserver',
   'svelte'
 }
 

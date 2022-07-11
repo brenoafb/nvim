@@ -27,3 +27,7 @@ map('i', '<leader>s', '<C-c>:w<CR>')
 -- Close all windows and exit with <leader>q
 map('n', '<leader>q', ':qa!<CR>')
 
+-- Insert date with <leader>d
+map('n', '<leader>d', '!!date "+\\%Y-\\%m-\\%d \\%H:\\%M:\\%S"<CR>')
+
+
