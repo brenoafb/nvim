@@ -30,4 +30,3 @@ map('n', '<leader>q', ':qa!<CR>')
 -- Insert date with <leader>d
 map('n', '<leader>d', '!!date "+\\%Y-\\%m-\\%d \\%H:\\%M:\\%S"<CR>')
 
-
