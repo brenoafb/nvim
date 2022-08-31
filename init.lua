@@ -6,6 +6,6 @@ require('core/autocmds')
 
 require('plugins/nvim-lspconfig')
 require('plugins/nvim-treesitter')
-require('plugins/fzf')
+require('plugins/telescope')
 require('plugins/nvim-orgmode')
 require('plugins/nvim-cmp')
