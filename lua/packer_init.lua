@@ -25,6 +25,9 @@ return packer.startup(function(use)
   -- LSP
   use 'neovim/nvim-lspconfig'
 
+  -- snippets
+  use "rafamadriz/friendly-snippets"
+
   -- Autocomplete
   use {
     'hrsh7th/nvim-cmp',
