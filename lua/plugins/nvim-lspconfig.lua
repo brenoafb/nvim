@@ -147,7 +147,8 @@ local servers = {
   'sumneko_lua',
   'terraformls',
   'svelte',
-  'rust_analyzer'
+  'rust_analyzer',
+  'hls'
 }
 
 -- Call setup
